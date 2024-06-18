@@ -5,6 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { Form16Component } from './form16/form16.component';
+import { EmployeeDetailComponent } from './employee-detail/employee-detail.component';
+
 
 const routes: Routes = [
   { path: 'signup', component: SignupComponent },
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'employee', component: EmployeeComponent },
   { path: 'form16', component: Form16Component },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'employee-detail', component: EmployeeDetailComponent }
+
 ];
 
 @NgModule({
