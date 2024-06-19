@@ -2,6 +2,7 @@ h2 {
   font-size: 24px;
   margin-bottom: 20px;
   text-align: center;
+  color: #c67707;
 }
 
 .employee-container {
@@ -17,7 +18,7 @@ h2 {
   float: right;
   margin-bottom: 20px;
   padding: 10px 15px;
-  background-color: #007BFF;
+  background-color: #c67707;
   color: white;
   border: none;
   border-radius: 5px;
@@ -25,7 +26,7 @@ h2 {
 }
 
 .add-button:hover {
-  background-color: #0056b3;
+  background-color: #a35d05;
 }
 
 .form-container {
@@ -45,6 +46,7 @@ form {
 label {
   margin-top: 10px;
   margin-bottom: 5px;
+  color: #c67707;
 }
 
 input {
@@ -85,7 +87,7 @@ th, td {
 }
 
 th {
-  background-color: #007BFF;
+  background-color: #c67707;
   color: white;
 }
 
@@ -100,7 +102,7 @@ tr:hover {
 
 .clickable {
   cursor: pointer;
-  color: #007BFF;
+  color: #c67707;
 }
 
 .clickable:hover {

@@ -54,7 +54,7 @@
     <tbody>
       <tr *ngFor="let emp of employees">
         <td><input type="checkbox" [(ngModel)]="emp.selected"></td>
-        <td (click)="viewEmployeeDetail(emp)" class="clickable">
+        <td (click)="viewEmployeeDetail()" class="clickable">
           <div>{{ emp.name }}</div>
           <div class="role">{{ emp.role }}</div>
         </td>

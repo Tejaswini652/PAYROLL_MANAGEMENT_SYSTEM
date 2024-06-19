@@ -32,7 +32,8 @@ export class EmployeeComponent implements OnInit {
 
   onSubmit(): void {
     if (this.employeeForm.valid) {
-      this.employees.push({ ...this.employeeForm.value, selected: false });
+      const newEmployee = { ...this.employeeForm.value, id: this.employees.length + 1, selected: false };
+      this.employees.push(newEmployee);
       this.employeeForm.reset();
       this.showForm = false;
       this.saveEmployees();
@@ -55,7 +56,7 @@ export class EmployeeComponent implements OnInit {
     }
   }
 
-  viewEmployeeDetail(employee: any): void {
-    this.router.navigate(['/employee-detail'], { queryParams: { employee: JSON.stringify(employee) } });
+  viewEmployeeDetail(): void {
+    this.router.navigate(['/employee-detail']);
   }
 }

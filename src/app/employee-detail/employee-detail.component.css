@@ -1,0 +1,47 @@
+.employee-detail {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #c67707;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: none;
+  cursor: pointer;
+  color: #c67707;
+}
+
+button.active {
+  border-color: #c67707;
+  font-weight: bold;
+}
+
+.tab-content {
+  padding: 20px;
+  border-top: 1px solid #ddd;
+}
+
+p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+strong {
+  color: #c67707;
+}

@@ -1,19 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+// import { Component, Input } from '@angular/core';
+
+// @Component({
+//   selector: 'app-employee-detail',
+//   templateUrl: './employee-detail.component.html',
+//   styleUrls: ['./employee-detail.component.css']
+// })
+// export class EmployeeDetailComponent {
+//   @Input() employee: any = {
+//     name: 'John Doe',
+//     email: 'john.doe@example.com',
+//     department: 'Engineering',
+//     role: 'Software Developer',
+//     ctc: 80000 // Assuming currency is in dollars
+//   };
+
+//   constructor() { }
+// }
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-employee-detail',
   templateUrl: './employee-detail.component.html',
   styleUrls: ['./employee-detail.component.css']
 })
-export class EmployeeDetailComponent implements OnInit {
-  employee: any;
+export class EmployeeDetailComponent {
+  currentTab: string = 'Overview';
 
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.employee = JSON.parse(params['employee']);
-    });
+  selectTab(tab: string): void {
+    this.currentTab = tab;
   }
+
+  
 }

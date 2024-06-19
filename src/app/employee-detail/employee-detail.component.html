@@ -1,8 +1,44 @@
-<h2>Employee Detail</h2>
-<div *ngIf="employee">
-  <p><strong>Name:</strong> {{ employee.name }}</p>
-  <p><strong>Role:</strong> {{ employee.role }}</p>
-  <p><strong>Email:</strong> {{ employee.email }}</p>
-  <p><strong>Department:</strong> {{ employee.department }}</p>
-  <p><strong>CTC:</strong> {{ employee.ctc | currency }}</p>
+<!-- <div class="employee-detail">
+  <h2>Employee Details</h2>
+  
+  <div>
+    <p><strong>Name:</strong> {{ employee.name }}</p>
+    <p><strong>Email:</strong> {{ employee.email }}</p>
+    <p><strong>Department:</strong> {{ employee.department }}</p>
+    <p><strong>Role:</strong> {{ employee.role }}</p>
+    <p><strong>CTC:</strong> {{ employee.ctc | currency:'USD':'symbol':'1.2-2' }}</p>
+  </div>
+</div> -->
+<div class="employee-detail">
+  <h2>Employee Details</h2>
+
+  <div class="tabs">
+    <button [class.active]="currentTab === 'Overview'" (click)="selectTab('Overview')">Overview</button>
+    <button [class.active]="currentTab === 'Salary Details'" (click)="selectTab('Salary Details')">Salary Details</button>
+    <button [class.active]="currentTab === 'Investments'" (click)="selectTab('Investments')">Investments</button>
+    <button [class.active]="currentTab === 'Reimbursements'" (click)="selectTab('Reimbursements')">Reimbursements</button>
+    <button [class.active]="currentTab === 'Payslips and forms'" (click)="selectTab('Payslips and forms')">Payslips and forms</button>
+    <button [class.active]="currentTab === 'Loans'" (click)="selectTab('Loans')">Loans</button>
+  </div>
+
+  <div class="tab-content">
+    <div *ngIf="currentTab === 'Overview'">
+      <p>Overview content will go here.</p>
+    </div>
+    <div *ngIf="currentTab === 'Salary Details'">
+      <p>Salary Details content will go here.</p>
+    </div>
+    <div *ngIf="currentTab === 'Investments'">
+      <p>Investments content will go here.</p>
+    </div>
+    <div *ngIf="currentTab === 'Reimbursements'">
+      <p>Reimbursements content will go here.</p>
+    </div>
+    <div *ngIf="currentTab === 'Payslips and forms'">
+      <p>Payslips and forms content will go here.</p>
+    </div>
+    <div *ngIf="currentTab === 'Loans'">
+      <p>Loans content will go here.</p>
+    </div>
+  </div>
 </div>

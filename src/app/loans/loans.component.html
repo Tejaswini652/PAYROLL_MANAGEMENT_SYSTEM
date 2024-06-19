@@ -1,0 +1,79 @@
+<div class="loans-container">
+    <h2 class="loans-header">Loans</h2>
+  
+    <!-- Add Loan Button -->
+    <button class="add-button" (click)="toggleForm()" *ngIf="!showForm">Add Loan</button>
+  
+    <!-- Form Section -->
+    <div *ngIf="showForm" class="form-container">
+      <h3>Add New Loan</h3>
+      <form [formGroup]="loanForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="employeeName">Employee Name</label>
+          <input id="employeeName" formControlName="employeeName" />
+          <div *ngIf="loanForm.controls['employeeName'].invalid && (loanForm.controls['employeeName'].dirty || loanForm.controls['employeeName'].touched)" class="error">
+            <small *ngIf="loanForm.controls['employeeName'].errors?.['required']">Employee Name is required.</small>
+          </div>
+        </div>
+        <div>
+          <label for="loanType">Loan Type</label>
+          <input id="loanType" formControlName="loanType" />
+          <div *ngIf="loanForm.controls['loanType'].invalid && (loanForm.controls['loanType'].dirty || loanForm.controls['loanType'].touched)" class="error">
+            <small *ngIf="loanForm.controls['loanType'].errors?.['required']">Loan Type is required.</small>
+          </div>
+        </div>
+        <div>
+          <label for="loanAmount">Loan Amount</label>
+          <input id="loanAmount" formControlName="loanAmount" type="number" />
+          <div *ngIf="loanForm.controls['loanAmount'].invalid && (loanForm.controls['loanAmount'].dirty || loanForm.controls['loanAmount'].touched)" class="error">
+            <small *ngIf="loanForm.controls['loanAmount'].errors?.['required']">Loan Amount is required.</small>
+            <small *ngIf="loanForm.controls['loanAmount'].errors?.['min']">Loan Amount must be greater than zero.</small>
+          </div>
+        </div>
+        <div>
+          <label for="amountPaid">Amount Paid</label>
+          <input id="amountPaid" formControlName="amountPaid" type="number" />
+          <div *ngIf="loanForm.controls['amountPaid'].invalid && (loanForm.controls['amountPaid'].dirty || loanForm.controls['amountPaid'].touched)" class="error">
+            <small *ngIf="loanForm.controls['amountPaid'].errors?.['required']">Amount Paid is required.</small>
+            <small *ngIf="loanForm.controls['amountPaid'].errors?.['min']">Amount Paid must be greater than or equal to zero.</small>
+          </div>
+        </div>
+        <div>
+          <label for="amountPending">Amount Pending</label>
+          <input id="amountPending" formControlName="amountPending" type="number" />
+          <div *ngIf="loanForm.controls['amountPending'].invalid && (loanForm.controls['amountPending'].dirty || loanForm.controls['amountPending'].touched)" class="error">
+            <small *ngIf="loanForm.controls['amountPending'].errors?.['required']">Amount Pending is required.</small>
+            <small *ngIf="loanForm.controls['amountPending'].errors?.['min']">Amount Pending must be greater than or equal to zero.</small>
+          </div>
+        </div>
+        <button type="submit" [disabled]="!loanForm.valid">Add Loan</button>
+        <button type="button" (click)="toggleForm()">Cancel</button>
+      </form>
+    </div>
+  
+    <!-- Loans Table -->
+    <table class="loans-table">
+      <thead>
+        <tr>
+          <th>Employee Name</th>
+          <th>Loan Type</th>
+          <th>Loan Amount</th>
+          <th>Amount Paid</th>
+          <th>Amount Pending</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let loan of loans" class="loans-item">
+          <td>{{ loan.employeeName }}</td>
+          <td>{{ loan.loanType }}</td>
+          <td>{{ loan.loanAmount | currency }}</td>
+          <td>{{ loan.amountPaid | currency }}</td>
+          <td>{{ loan.amountPending | currency }}</td>
+        </tr>
+        <tr *ngIf="loans.length === 0">
+          <td colspan="5" style="text-align: center;">No loans found.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
