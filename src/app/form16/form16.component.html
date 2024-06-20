@@ -1,0 +1,8 @@
+<form>
+  <input type="file" id="fileInput" (change)="onFileSelected($event)" />
+  <label for="fileInput">Choose File</label>
+  <button type="button" (click)="onUpload()">Upload</button>
+  <div *ngIf="file">
+    <p>Selected file: {{ file.name }}</p>
+  </div>
+</form>

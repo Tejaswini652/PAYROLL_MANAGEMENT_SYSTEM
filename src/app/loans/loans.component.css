@@ -1,0 +1,199 @@
+/* General styles */
+.loans-container {
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 20px;
+  position: relative;
+  margin-top: 100px;
+}
+
+.loans-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+.add-button, .manage-button, .add-loan-type-button, .closebutton {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #c67707;
+  color: #fff;
+  border: none;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+.closebutton{
+
+  margin-top: 20px;
+  margin-left: -20%;
+}
+.add-button:hover, .manage-button:hover, .add-loan-type-button:hover, .closebutton:hover {
+  background-color: #f3aa3c; /* Darker shade for hover effect */
+}
+.addloan:hover,.cancel:hover,.save:hover{
+  background-color: #f3aa3c;
+}
+.add-button, .manage-button {
+  float: right;
+  margin-left: 10px;
+}
+
+.manage-button {
+  margin-right: 0;
+}
+
+.closebutton {
+  float: right;
+}
+
+/* Modals and overlays */
+.add-loan-modal, .modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  align-items: center;
+}
+
+.add-loan-modal-content, .modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; 
+  max-height: 80vh;
+  margin-left: 30%;
+  margin-top: 60px;
+}
+
+.close-modal, .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.close-modal:hover, .close:hover {
+  color: #000;
+}
+
+.show {
+  display: flex !important;
+}
+
+/* Form styles */
+form div {
+  margin-bottom: 15px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input, form textarea {
+  width: calc(100% - 70px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #c67707;
+  color: #fff;
+  border: none;
+  margin-right: 10px;
+}
+
+.error small {
+  color: red;
+  font-size: 12px;
+}
+
+/* Table styles */
+.loans-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-top: 12%;
+}
+
+.loans-table th, .loans-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.loans-table th {
+  background-color: #c67707;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Manage Loans Styles */
+.manage-loans-container {
+  margin-top: 20px;
+}
+
+.add-loan-type-form {
+  margin-top: 20px;
+}
+
+.add-loan-type-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-loan-type-form form div {
+  margin-bottom: 15px;
+}
+
+.add-loan-type-form form button {
+  align-self: flex-start;
+}
+
+.modal-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.modal-content table th, .modal-content table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.modal-content table th {
+  background-color: #c67707;
+  color: #fff;
+  font-weight: bold;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+}
+.modal-content{
+  margin-top: -20px;
+  margin-left: 2%;
+}

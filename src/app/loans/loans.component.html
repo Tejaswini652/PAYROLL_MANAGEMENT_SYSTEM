@@ -1,0 +1,162 @@
+<div class="loans-container">
+  <h2 class="loans-header">Loans</h2>
+  <button class="add-button" (click)="toggleAddLoanModal()">Add Loan</button>
+  <button class="manage-button" (click)="toggleManageLoans()">Manage Loans</button>
+
+  <!-- Add Loan Form as a Modal -->
+  <div class="add-loan-modal" [ngStyle]="{'display': showAddLoanModal ? 'block' : 'none'}">
+    <div class="add-loan-modal-content">
+      <span class="close-modal" (click)="toggleAddLoanModal()">&times;</span>
+      <h3>Add New Loan</h3>
+      <form [formGroup]="loanForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="employeeName">Employee Name</label>
+            <input id="employeeName" formControlName="employeeName" />
+            <div *ngIf="loanForm.controls['employeeName'].invalid && (loanForm.controls['employeeName'].dirty || loanForm.controls['employeeName'].touched)" class="error">
+              <small *ngIf="loanForm.controls['employeeName'].errors?.['required']">Employee Name is required.</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="loanType">Loan Type</label>
+            <input id="loanType" formControlName="loanType" />
+            <div *ngIf="loanForm.controls['loanType'].invalid && (loanForm.controls['loanType'].dirty || loanForm.controls['loanType'].touched)" class="error">
+              <small *ngIf="loanForm.controls['loanType'].errors?.['required']">Loan Type is required.</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="loanAmount">Loan Amount</label>
+            <input id="loanAmount" formControlName="loanAmount" type="number" />
+            <div *ngIf="loanForm.controls['loanAmount'].invalid && (loanForm.controls['loanAmount'].dirty || loanForm.controls['loanAmount'].touched)" class="error">
+              <small *ngIf="loanForm.controls['loanAmount'].errors?.['required']">Loan Amount is required.</small>
+              <small *ngIf="loanForm.controls['loanAmount'].errors?.['min']">Loan Amount must be greater than zero.</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="disbursementDate">Disbursement Date</label>
+            <input id="disbursementDate" formControlName="disbursementDate" type="date" />
+            <div *ngIf="loanForm.controls['disbursementDate'].invalid && (loanForm.controls['disbursementDate'].dirty || loanForm.controls['disbursementDate'].touched)" class="error">
+              <small *ngIf="loanForm.controls['disbursementDate'].errors?.['required']">Disbursement Date is required.</small>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="prerequisiteRate">Prerequisite Rate</label>
+            <input id="prerequisiteRate" formControlName="prerequisiteRate" type="number" />
+            <div *ngIf="loanForm.controls['prerequisiteRate'].invalid && (loanForm.controls['prerequisiteRate'].dirty || loanForm.controls['prerequisiteRate'].touched)" class="error">
+              <small *ngIf="loanForm.controls['prerequisiteRate'].errors?.['required']">Prerequisite Rate is required.</small>
+              <small *ngIf="loanForm.controls['prerequisiteRate'].errors?.['min']">Prerequisite Rate must be greater than zero.</small>
+            </div>
+          </div>
+        </div>
+        <div >
+          <label for="reason">Reason</label>
+          <textarea id="reason" formControlName="reason"></textarea>
+          <div *ngIf="loanForm.controls['reason'].invalid && (loanForm.controls['reason'].dirty || loanForm.controls['reason'].touched)" class="error">
+            <small *ngIf="loanForm.controls['reason'].errors?.['required']">Reason is required.</small>
+          </div>
+        </div>
+        <h4>Repayment</h4>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="startDate">Start Date</label>
+            <input id="startDate" formControlName="startDate" type="date" />
+            <div *ngIf="loanForm.controls['startDate'].invalid && (loanForm.controls['startDate'].dirty || loanForm.controls['startDate'].touched)" class="error">
+              <small *ngIf="loanForm.controls['startDate'].errors?.['required']">Start Date is required.</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="instalmentAmount">Instalment Amount</label>
+            <input id="instalmentAmount" formControlName="instalmentAmount" type="number" />
+            <div *ngIf="loanForm.controls['instalmentAmount'].invalid && (loanForm.controls['instalmentAmount'].dirty || loanForm.controls['instalmentAmount'].touched)" class="error">
+              <small *ngIf="loanForm.controls['instalmentAmount'].errors?.['required']">Instalment Amount is required.</small>
+              <small *ngIf="loanForm.controls['instalmentAmount'].errors?.['min']">Instalment Amount must be greater than zero.</small>
+            </div>
+          </div>
+        </div>
+        <button type="submit" [disabled]="!loanForm.valid" class="addloan">Add Loan</button>
+        <button type="button" (click)="toggleAddLoanModal()" class="cancel">Cancel</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Loans Table -->
+  <table class="loans-table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Loan Amount</th>
+        <th>Amount Paid</th>
+        <th>Amount Pending</th>
+        <th>Loan Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let loan of loans" class="loans-item">
+        <td>{{ loan.employeeName }}</td>
+        <td>{{ loan.loanAmount | currency }}</td>
+        <td>{{ loan.amountPaid | currency }}</td>
+        <td>{{ loan.amountPending | currency }}</td>
+        <td>{{ loan.loanType }}</td>
+      </tr>
+      <tr *ngIf="loans.length === 0">
+        <td colspan="5" style="text-align: center;">No loans found.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Manage Loans Modal -->
+  <div class="modal" [ngClass]="{'show': showManageLoans}">
+    <div class="modal-content">
+      <span class="close" (click)="toggleManageLoans()">&times;</span>
+      <h2>Manage Loans</h2>
+      <button class="add-loan-type-button" (click)="toggleAddLoanTypeForm()">Add Loan Type</button>
+
+      <!-- Add Loan Type Form -->
+      <div class="add-loan-type-form" *ngIf="showAddLoanTypeForm">
+        <form [formGroup]="manageLoansForm" (ngSubmit)="onManageLoansSubmit()">
+          <div class="form-row">
+            <div claa="form-group">
+              <label for="loanName">Loan Name</label>
+              <input id="loanName" formControlName="loanName" />
+              <div *ngIf="manageLoansForm.controls['loanName'].invalid && (manageLoansForm.controls['loanName'].dirty || manageLoansForm.controls['loanName'].touched)" class="error">
+                <small *ngIf="manageLoansForm.controls['loanName'].errors?.['required']">Loan Name is required.</small>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="prerequisiteRate">Prerequisite Rate</label>
+              <input id="prerequisiteRate" formControlName="prerequisiteRate" type="number" />
+              <div *ngIf="manageLoansForm.controls['prerequisiteRate'].invalid && (manageLoansForm.controls['prerequisiteRate'].dirty || manageLoansForm.controls['prerequisiteRate'].touched)" class="error">
+                <small *ngIf="manageLoansForm.controls['prerequisiteRate'].errors?.['required']">Prerequisite Rate is required.</small>
+                <small *ngIf="manageLoansForm.controls['prerequisiteRate'].errors?.['min']">Prerequisite Rate must be greater than zero.</small>
+              </div>
+            </div>
+          </div>
+          <button type="submit" [disabled]="!manageLoansForm.valid" class="save">Save</button>
+        </form>
+      </div>
+
+      <!-- Managed Loans Table -->
+      <table>
+        <thead>
+          <tr>
+            <th>Loan Name</th>
+            <th>Prerequisite Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let loan of managedLoans">
+            <td>{{ loan.loanName }}</td>
+            <td>{{ loan.prerequisiteRate }}%</td>
+          </tr>
+          <tr *ngIf="managedLoans.length === 0">
+            <td colspan="2" style="text-align: center;">No managed loans found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

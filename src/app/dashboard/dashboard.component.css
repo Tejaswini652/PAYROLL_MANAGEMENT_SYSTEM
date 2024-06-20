@@ -1,0 +1,126 @@
+/* General Styles */
+.loans-container {
+  margin: 20px auto;
+  max-width: 800px; 
+  padding: 20px;
+  position: relative; 
+}
+
+.loans-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.add-button, .manage-button, .add-loan-type-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #c67707;
+  color: #f2f2f2;
+  margin-bottom: 10px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.add-button:hover, .manage-button:hover, .add-loan-type-button:hover {
+  background-color: #f3aa3c;
+  color: #fff;
+}
+
+.add-button {
+  margin-left: 64%;
+  margin-top: 15px;
+}
+
+.manage-button {
+  margin-left: 10px;
+}
+
+/* Modal Styles */
+.add-loan-modal, .modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.add-loan-modal-content, .modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  max-width: 600px;
+}
+
+.close-modal, .close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-modal:hover, .close:hover {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.show {
+  display: block !important;
+}
+
+/* Form Styles */
+form div {
+  margin-bottom: 15px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+form input, form textarea {
+  width: calc(100% - 22px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+/* Table Styles */
+.loans-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.loans-table th, .loans-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.loans-table th {
+  background-color: #c67707;
+  color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Error Message Styles */
+.error small {
+  color: red;
+  font-size: 12px;
+}
